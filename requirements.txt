@@ -1,7 +1,5 @@
 
 Flask==1.1.1
-Flask_Migrate==2.5.2
-pipenv install==2.4.1
 Jinja2==2.11.1
 jsonify==0.5
 numpy==1.18.1
