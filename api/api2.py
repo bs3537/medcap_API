@@ -28,7 +28,7 @@ def create_app():
     return app
 
 if __name__ == '__main__':
-    fp=gzip.open(urlopen('https://storage.cloud.google.com/medcabapi/baseline_model.pkl.gz','rb'))
+    fp=gzip.open('baseline_model_gzip.gz','rb')
     s= fp.read()
     model = joblib.load(s)
     app.run(debug=True)
