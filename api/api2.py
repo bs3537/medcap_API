@@ -8,12 +8,18 @@ import numpy as np
 from urllib.request import urlopen
 from flask_cors import CORS
 
+
+
 def create_app():
     app = Flask(__name__)
     CORS(app)
+    
+    @app.route('/')
+    def index():
+        return "Cannabis Strain Selector API"
 
 
-    @app.route('/api/', methods=['POST'])
+    @app.route('/api/', methods=['POST', 'GET'])
     def prediction():
         data = request.get_json()
         prediction = np.array2string(model.predict(data))
