@@ -19,5 +19,5 @@ def create_app():
     return app
 
 if __name__ == '__main__':
-    model = joblib.load('https://storage.cloud.google.com/medcabapi/baseline_model2.pkl')
+    model = joblib.load('baseline_model2.pkl')
     app.run(debug=True)
