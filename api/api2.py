@@ -6,9 +6,11 @@ import joblib
 import json
 import numpy as np
 from urllib.request import urlopen
+from flask_cors import CORS
 
 def create_app():
     app = Flask(__name__)
+    CORS(app)
 
 
     @app.route('/api/', methods=['POST'])
