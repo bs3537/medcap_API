@@ -30,5 +30,6 @@ def create_app():
 
 if __name__ == '__main__':
     fp=gzip.open('baseline_model_gzip.gz','rb')
-    model = joblib.load(fp)
+    s= fp.read()
+    model = joblib.load(s)
     app.run(debug=True)
