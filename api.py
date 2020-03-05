@@ -18,7 +18,7 @@ def create_app():
         return "Cannabis Strain Selector API"
 
 
-    @app.route('/api/', methods=['POST'])
+    @app.route('/api/', methods=['POST', 'GET'])
     def prediction():
         data = request.get_json()
         prediction = np.array2string(model.predict(data))
