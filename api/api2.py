@@ -22,6 +22,7 @@ def create_app():
     @app.route('/api/', methods=['POST', 'GET'])
     def prediction():
         data = request.get_json()
+        model = joblib.load(urlopen("https://storage.cloud.google.com/medcabapi/baseline_model2.pkl"))
         prediction = np.array2string(model.predict(data))
 
         return jsonify(prediction)
