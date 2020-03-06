@@ -3,31 +3,27 @@ import pickle
 import joblib
 import json
 import numpy as np
-import gzip
-from urllib.request import urlopen
-from flask_cors import CORS
 
+
+app = Flask(__name__)
 
 
 def create_app():
-    app = Flask(__name__)
-    CORS(app)
-    
+
     @app.route('/')
     def index():
-        return "Cannabis Strain Selector API"
+        return "Cannabis Strain Recommender for medical purpose"
 
 
-    @app.route('/api/', methods=['POST', 'GET'])
+    @app.route('/api/', methods=['POST'])
     def prediction():
         data = request.get_json()
         prediction = np.array2string(model.predict(data))
 
         return jsonify(prediction)
+
     return app
 
 if __name__ == '__main__':
-    fp=gzip.open('baseline_model_gzip.gz','rb')
-    s= fp.read()
-    model = joblib.load(s)
+    model = joblib.load('potguide_model.pkl')
     app.run(debug=True)
